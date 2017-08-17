@@ -1,0 +1,26 @@
+<md-expansion-panel class=" md-expansion-demo-width" #myPanel [expanded]="true">
+  <md-expansion-panel-header>
+    <mat-panel-description class="secondary">Search Customer</mat-panel-description>
+  </md-expansion-panel-header>
+
+
+<form (ngSubmit)="onSubmit()" #searchInputForm="ngForm">
+      <div class="form-inline row row-margin">
+        <label for="feId" class="col-md-2 uix-control-label">Fe Id</label>
+        <input type="text" class="form-control col-md-2" id="feId" required
+               [(ngModel)]="searchInput.feId" name="feId" #feId="ngModel">
+      </div>
+
+      <div class="form-inline row row-margin">
+        <label for="custId" class="col-md-2 uix-control-label">Customer Id</label>
+        <input type="text" class="form-control col-md-2" id="custId" required
+               [(ngModel)]="searchInput.custId" name="custId" #custId="ngModel">             
+      </div>
+      <div class="form-inline row button-panel">
+        <button type="submit" class="btn btn-success" [disabled]="!searchInputForm.form.valid">Run Demo</button>
+        <button type="button" class="btn btn-default" (click)="clearDetails(); searchInputForm.reset()">Clear</button>        
+      </div>
+    </form>
+</md-expansion-panel>
+
+<uix-customer-profile-optimized [customerInfo] = "customer"></uix-customer-profile-optimized>
